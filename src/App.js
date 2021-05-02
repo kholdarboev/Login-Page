@@ -1,13 +1,16 @@
-import React, {Component} from 'react'
-import {Container} from './components/style'
-class App extends Component {
-  render(){
-    return(
+import './App.css'  
+import React,{useState} from 'react';
+import LoginPage from './components/LoginPage'
+import {Main} from './components/style'
 
-      <Container>
-        
-      </Container>
-    )
-  }
+
+const App = (props)=>{
+
+  return(
+    <Main>
+          <LoginPage/>
+    </Main>
+  )
 }
-export default App
+
+export default App;
