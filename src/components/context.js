@@ -1,11 +1,17 @@
-import React,{createContext} from 'react';
+import React,{useState,createContext} from 'react';
 
-const LoginPage = createContext();
+export const LoginTheme= createContext();
 
-export const LoginProvider = ({children}) => {
+export const Mode = ({children}) => {
+   const [mode,setMode] = useState({
+      button:'blue',
+      title:'black',
+      background:'white'
+   })
   return (
-     <LoginPage.Provider>
+     <LoginTheme.Provider value={[mode,setMode]}>
         {children}
-     </LoginPage.Provider>    
+     </LoginTheme.Provider>    
   )
 }
+export default Mode

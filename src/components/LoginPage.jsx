@@ -1,46 +1,83 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
+import { LoginTheme } from './context'
 import {
-    Main, Container, Icon, TitleWrapper, Title, TitleDesc,
+    Main, Container, Icon, TitleWrapper, ModeWrapper, Toggle, Title, TitleDesc,
     LoginWrapper, LoginTitle, InputWrapper, UserInputWrapper,
     UserInput, Remember, SignupWrapper, Help, SignIn, Register, RegisterTitle, RegisterLink
 } from './style';
 
 
 const LoginPage = () => {
+    const [toggle, setToggle] = useState(false)
+    const [theme, setTheme] = useContext(LoginTheme)
 
+
+
+    const dark = {
+        back: 'rgba(52, 104, 249, 1)',
+        title: 'white',
+        button: 'rgba(52, 104, 249, 1)',
+        background: 'white',
+        icon: 'white',
+        login: '#ffffff',
+        title_link: 'black'
+    }
+    const light = {
+        back: 'black',
+        title: 'white',
+        button: 'rgba(183, 139, 244, 1)',
+        background: 'black',
+        icon: 'white',
+        login: '#242424',
+        title_link: 'white'
+    }
+
+
+    const onChange = () => {
+        setToggle(!toggle)
+        setTheme(toggle ? dark : light)
+    }
 
 
 
     return (
         <Main>
-            <Container>
-                <Icon.ChevronLeft />
+            <Container color={theme.back}>
+                <Icon.ChevronLeft color={theme.icon} />
                 <TitleWrapper>
-                    <Title>Welcome Back</Title>
-                    <TitleDesc>We missed you? Login to get Started</TitleDesc>
+                    <Title color={theme.title}>Welcome Back</Title>
+                    <TitleDesc color={theme.title}>We missed you? Login to get Started</TitleDesc>
                 </TitleWrapper>
             </Container>
-            <LoginWrapper>
-                <LoginTitle>LOGIN</LoginTitle>
+            <LoginWrapper color={theme.login}>
+                <ModeWrapper>
+                    <LoginTitle color={theme.title_link}>LOGIN</LoginTitle>
+                    <Toggle
+                        onChange={onChange}
+                        checked={toggle}
+                        size={45}
+                    />
+                </ModeWrapper>
                 <InputWrapper>
                     <UserInputWrapper>
-                        <UserInput />
+                        <UserInput placeholder='email' type='email' />
                         <Icon.User />
                     </UserInputWrapper>
                     <UserInputWrapper>
-                        <UserInput />
+                        <UserInput placeholder='password' type='password' />
                         <Icon.Lock />
                     </UserInputWrapper>
-                    <Remember>
-                        <input type='checkbox' /> <span>Remember Me</span>
+                    <Remember color={theme.title_link}>
+                        <input type='checkbox' />
+                        <span style={{ marginLeft: '10px' }} >Remember Me</span>
                     </Remember>
-                    <SignupWrapper>
-                        <Help>Need Help?</Help>
-                        <SignIn>Sign In</SignIn>
+                    <SignupWrapper  >
+                        <Help color={theme.title_link}>Need Help?</Help>
+                        <SignIn color={theme.button}>Sign In</SignIn>
                     </SignupWrapper>
                     <Register>
-                        <RegisterTitle>Don't have an account?</RegisterTitle>
-                        <RegisterLink>Register</RegisterLink>
+                        <RegisterTitle color={theme.title_link}>Don't have an account?</RegisterTitle>
+                        <RegisterLink color={theme.button}>Register instead</RegisterLink>
                     </Register>
                 </InputWrapper>
 
