@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { LoginTheme } from './context'
 import {
     Main, Container, Icon, TitleWrapper, ModeWrapper, Toggle, Title, TitleDesc,
@@ -8,9 +8,15 @@ import {
 
 
 const LoginPage = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [toggle, setToggle] = useState(false)
     const [theme, setTheme] = useContext(LoginTheme)
+    // const [localInfo, setLocalInfo] = useState(localStorage.setItem())
 
+    // useEffect(() => {
+    //     setLocalInfo(localStorage.setItem(email))
+    // }, [localStorage.setItem(email)])
 
 
     const dark = {
@@ -38,7 +44,13 @@ const LoginPage = () => {
         setTheme(toggle ? dark : light)
     }
 
-
+    // const setLoginInfo = (e) => {
+    //     if
+    //         (e.target.checked)
+    //         localStorage.setItem([email, setEmail])
+    //     localStorage.setItem([password, setPassword])
+    //     // setLocalInfo()
+    // }
 
     return (
         <Main>
@@ -60,11 +72,12 @@ const LoginPage = () => {
                 </ModeWrapper>
                 <InputWrapper>
                     <UserInputWrapper>
-                        <UserInput placeholder='email' type='email' />
+                        <UserInput value={email} onChange={(e) => { setEmail(e.target.value) }} placeholder='email' type='email' />
                         <Icon.User />
                     </UserInputWrapper>
                     <UserInputWrapper>
-                        <UserInput placeholder='password' type='password' />
+
+                        <UserInput value={password} onChange={(e) => { setPassword(e.target.value) }} placeholder='password' type='password' />
                         <Icon.Lock />
                     </UserInputWrapper>
                     <Remember color={theme.title_link}>

@@ -16,6 +16,7 @@ height:70vh;
 
 `
 export const Container = styled.div`
+background-color:rgba(52, 104, 249, 1);
 background:${({color})=>color};
 width:450px;
 font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
@@ -51,6 +52,7 @@ padding-bottom:80px;
 export const LoginWrapper = styled.div`
 width:450px;
 position: absolute;
+background-color:#fff;
 background:${({color})=>color};
 bottom:-140px;
 border-top-right-radius:50px;

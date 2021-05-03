@@ -3,7 +3,6 @@ import React,{useState} from 'react';
 import LoginPage from './components/LoginPage'
 import {Main} from './components/style'
 
-
 const App = (props)=>{
 
   return(
